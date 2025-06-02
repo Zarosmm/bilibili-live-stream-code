@@ -1,0 +1,11 @@
+[project]
+name = "bilibili-live-stream-code"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.13"
+dependencies = [
+    "nuitka>=2.7.5",
+    "pyside6>=6.9.0",
+    "requests>=2.32.3",
+]
