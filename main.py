@@ -1,5 +1,6 @@
 import sys
 from PySide6.QtWidgets import QApplication
+from PySide6.QtGui import QIcon
 from src.ui.main_window import MainWindow
 
 
@@ -11,6 +12,9 @@ def main():
     app.setApplicationName("B站直播推流码获取工具")
     app.setApplicationVersion("0.1.0")
     app.setOrganizationName("BilibiliLiveStreamCode")
+
+    # 设置应用程序图标
+    app.setWindowIcon(QIcon("bilibili.ico"))
 
     # 创建主窗口
     window = MainWindow()
