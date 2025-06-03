@@ -1,1 +1,1 @@
-uv run python -m nuitka --onefile --windows-disable-console --enable-plugin=pyside6 --follow-import-to=need --output-dir=build main.py
+uv run python -m nuitka --onefile --windows-disable-console --enable-plugin=pyside6 --follow-import-to=need --windows-icon-from-ico=bilibili.ico --output-dir=build main.py
