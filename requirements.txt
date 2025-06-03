@@ -1,0 +1,4 @@
+pillow
+pyside6
+qrcode
+requests
