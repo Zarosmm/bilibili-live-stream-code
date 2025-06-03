@@ -160,7 +160,7 @@ class MainWindow(QMainWindow):
         settings_layout.addWidget(QLabel("直播标题:"), 2, 0)
         self.title_edit = QLineEdit()
         self.title_edit.setMaxLength(20)
-        self.title_edit.setPlaceholderText("不超过20个字符")
+        self.title_edit.setPlaceholderText("不超过20个字符，留空则保持现有标题不变")
         settings_layout.addWidget(self.title_edit, 2, 1)
 
         self.update_title_button = QPushButton("更新标题")
