@@ -1,0 +1,55 @@
+name: Build and Release
+
+on:
+  push:
+    tags:
+      - 'v*'
+
+jobs:
+  build:
+    runs-on: windows-latest
+
+    steps:
+      # 检出代码
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      # 设置 Python 环境
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'  # 根据项目需求选择 Python 版本
+          architecture: 'x64'
+
+      # 安装 uv
+      - name: Install uv
+        run: |
+          pip install uv
+
+      # 安装项目依赖（如果有 requirements.txt）
+      - name: Install dependencies
+        run: |
+          if (Test-Path requirements.txt) { uv pip install -r requirements.txt }
+
+      # 运行 build.bat 编译项目
+      - name: Run build.bat
+        run: |
+          .\build.bat
+
+      # 上传编译产物作为工件
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: bilibili-executable
+          path: build/main.exe
+
+      # 创建 Release 并上传可执行文件
+      - name: Create Release
+        uses: softprops/action-gh-release@v2
+        with:
+          files: build/main.exe
+          name: Release ${{ github.ref_name }}
+          draft: false
+          prerelease: false
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
