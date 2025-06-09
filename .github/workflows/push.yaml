@@ -39,24 +39,6 @@ jobs:
       - name: Run build.bat
         run: |
           .\build.bat
-
-      # 上传编译产物作为工件
-      - name: Upload build artifact
-        uses: actions/upload-artifact@v4
-        with:
-          name: bilibili-executable
-          path: build/main.exe
-
-      # 创建 Release 并上传可执行文件
-      - name: Create Release
-        uses: softprops/action-gh-release@v2
-        with:
-          files: build/main.exe
-          name: Release ${{ github.ref_name }}
-          draft: false
-          prerelease: false
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
   create-release:
     name: Create Release 🛫
     if: github.ref_type == 'tag'
