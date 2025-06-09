@@ -29,7 +29,7 @@ jobs:
       # 安装项目依赖（如果有 requirements.txt）
       - name: Install dependencies
         run: |
-          if (Test-Path requirements.txt) { uv pip install -r requirements.txt }
+          if (Test-Path requirements.txt) { uv pip install -r requirements.txt --system}
 
       # 运行 build.bat 编译项目
       - name: Run build.bat
